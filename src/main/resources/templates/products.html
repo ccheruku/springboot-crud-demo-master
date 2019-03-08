@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head lang="en">
+
+    <title>Spring Boot Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <style type="text/css" class="init"/>
+		<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+	<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				'columnDefs': [ {
+			        'targets': [3,4,5,6], // column index (start from 0)
+			        'orderable': false, // set orderable false for selected columns
+			     }]
+			});
+		});
+	</script>
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(products)}">
+        <h2>Product List</h2>
+        <table id="example" class="display" style="width:100%">
+        	<thead>
+	            <tr>
+	                <th>Id</th>
+	                <th>Product Id</th>
+	                <th>Name</th>
+	                <th>Price</th>
+	                <th>View</th>
+	                <th>Edit</th>
+	                <th>Delete</th>
+	            </tr>
+           	</thead>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}">Id</td>
+ 				<td th:text="${product.productId}">Product Id</td>
+                <td th:text="${product.name}">descirption</td>
+                <td th:text="${product.price}">price</td>
+                <td><a th:href="${ '/product/' + product.id}" class="btn btn-success btn-xs">View</a></td>
+                <td><a th:href="${'/product/edit/' + product.id}" class="btn btn-warning btn-xs">Edit</a></td>
+                <td><a th:href="${'/product/delete/' + product.id}" class="btn btn-danger btn-xs">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+    
+   				 <!-- Pagination Bar -->
+    <!-- <div th:fragment='paginationbar'>
+        <div>
+        
+            <ul class='pagination pagination-centered'>
+                <li th:class="${page.firstPage}?'disabled':''">
+                <span th:if='${page.firstPage}'>← First</span>
+                <a th:if='${not page.firstPage}'  th:href='@{${page.url}(page=0,size=${page.size})}'>← First</a>
+                </li>
+                <li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+                <span th:if='${not page.hasPreviousPage}'>«</span>
+                <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}' title='Go to previous page'>«</a>
+                </li>
+                <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''">
+                <span th:if='${item.current}' th:text='${item.number}'>1</span>
+                <a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
+                </li>
+                <li th:class="${page.hasNextPage}? '' : 'disabled'">
+                <span th:if='${not page.hasNextPage}'>»</span>
+                <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}' title='Go to next page'>»</a>
+                </li>
+                <li th:class="${page.lastPage}? 'disabled' : ''">
+                <span th:if='${page.lastPage}'>Last →</span>
+                <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+</div>
+
+</body>
+</html>
