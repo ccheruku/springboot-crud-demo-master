@@ -11,7 +11,7 @@ This project is based on the [Spring Boot](http://projects.spring.io/spring-boot
 - Spring MVC (Tomcat)
 - [Thymleaf](https://thymeleaf.org)
 
-![demo](https://github.com/ccheruku/sprinboot-crud-demo-master/blob/release/docker1/src/main/resources/static/images/demo.GIF?raw=true)
+![demo](https://github.com/ccheruku/springboot-crud-demo-master/blob/master/src/main/resources/static/images/demo.GIF?raw=true)
 
 ## Installation 
 The project is created with Maven, so you just need to import it to your IDE and build the project to resolve the dependencies
