@@ -26,6 +26,7 @@ spring.datasource.username=root
 spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=update
 '''
+in:readme Spring Boot CRUD demo
 
 ## Usage 
 Run the project through the IDE and head out to [http://localhost:8080](http://localhost:8080)
